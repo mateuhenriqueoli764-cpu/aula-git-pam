@@ -3,4 +3,6 @@ h6{
     color: rgb(216, 216, 216);
     background-color: rgb(0, 0, 0);
     padding: 15px;
+    justify-content: center;
+    align-items: center ;
 }
