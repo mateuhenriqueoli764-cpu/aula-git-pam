@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Store - Purchase</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/purchase.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Purchase Your Games</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="purchase.html">Purchase</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="game-selection">
+            <h2>Select Your Games</h2>
+            <form id="purchase-form">
+                <label for="game">Choose a game:</label>
+                <select id="game" name="game">
+                    <option value="game1">Game 1</option>
+                    <option value="game2">Game 2</option>
+                    <option value="game3">Game 3</option>
+                </select>
+
+                <label for="deck">Choose a deck:</label>
+                <select id="deck" name="deck">
+                    <option value="deck1">Deck 1</option>
+                    <option value="deck2">Deck 2</option>
+                    <option value="deck3">Deck 3</option>
+                </select>
+
+                <button type="submit">Add to Cart</button>
+            </form>
+        </section>
+
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price">Total: $0.00</p>
+            <button id="checkout">Checkout</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-bottom">
+            © 2026 NAIPE. Todos os direitos reservados.
+        </div>
+    </footer>
+</body>
+</html>

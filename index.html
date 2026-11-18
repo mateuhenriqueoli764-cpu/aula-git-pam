@@ -1,13 +1,668 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NAIPE — Baralhos Exclusivos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #f8f7f3;
+    --dark: #171916;
+    --gold: #b69a68;
+    --muted: #77776f;
+    --white: #fff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    height: 85px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e7e5de;
+    background: var(--bg);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    letter-spacing: 5px;
+}
+
+.logo span {
+    color: var(--gold);
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+    font-size: 13px;
+}
+
+nav a {
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.header-btn {
+    background: var(--dark);
+    color: white;
+    padding: 14px 23px;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.menu-toggle {
+    display: none;
+    border: 0;
+    background: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 620px;
+    align-items: center;
+    padding: 75px 8%;
+    gap: 50px;
+}
+
+.tag {
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-size: 11px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    line-height: 1.1;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 15px;
+    max-width: 450px;
+    margin-bottom: 35px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 17px 30px;
+    background: var(--dark);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: var(--gold);
+    transform: translateY(-3px);
+}
+
+.hero-image {
+    height: 470px;
+    overflow: hidden;
+    background: #e6e0d4;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.products {
+    background: white;
+    padding: 100px 8%;
+}
+
+.heading {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    font-weight: 500;
+    margin-bottom: 13px;
+}
+
+.heading p {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product {
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 350px;
+    overflow: hidden;
+    background: #f0eee9;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product:hover img {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: 20px 0;
+}
+
+.product-info h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.product-info p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+.price {
+    color: var(--dark) !important;
+    font-size: 17px !important;
+    font-weight: 700;
+    margin-top: 13px !important;
+}
+
+.buy-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border: 1px solid var(--dark);
+    margin-top: 15px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: .3s;
+}
+
+.buy-btn:hover {
+    background: var(--dark);
+    color: white;
+}
+
+.about {
+    padding: 100px 8%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 65px;
+    align-items: center;
+}
+
+.about-image {
+    height: 430px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 43px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}
+
+.about p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.benefits {
+    background: white;
+    padding: 85px 8%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 35px;
+    text-align: center;
+}
+
+.benefit span {
+    font-size: 30px;
+    color: var(--gold);
+}
+
+.benefit h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin: 18px 0 12px;
+}
+
+.benefit p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.promo {
+    padding: 100px 20px;
+    background: #e9e4d9;
+    text-align: center;
+}
+
+.promo h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.promo p {
+    color: #69645a;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.testimonials {
+    background: white;
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.testimonials blockquote {
+    max-width: 650px;
+    margin: auto;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    line-height: 1.6;
+}
+
+.testimonials p {
+    color: var(--gold);
+    margin-top: 25px;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+footer {
+    padding: 65px 8% 25px;
+    background: var(--dark);
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 35px;
+    margin-bottom: 55px;
+}
+
+footer h4 {
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+footer p, footer a {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.footer-bottom {
+    border-top: 1px solid #393936;
+    padding-top: 22px;
+    color: #888;
+    font-size: 11px;
+}
+
+@media(max-width: 768px) {
+    header {
+        padding: 0 5%;
+        height: 75px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        padding: 25px;
+        flex-direction: column;
+        z-index: 10;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    .header-btn {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 65px 6%;
+    }
+
+    .hero-image {
+        height: 350px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-image {
+        height: 400px;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        padding: 75px 6%;
+    }
+
+    .about-image {
+        height: 330px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
+    .promo h2 {
+        font-size: 36px;
+    }
+
+    .heading h2 {
+        font-size: 35px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+}
+</style>
 </head>
+
 <body>
-    
-    
+
+<header>
+    <a href="#" class="logo">NAIPE<span>.</span></a>
+
+    <nav id="nav">
+        <a href="#inicio">Início</a>
+        <a href="#produtos">Baralhos</a>
+        <a href="#sobre">Nossa marca</a>
+        <a href="#contato">Contato</a>
+    </nav>
+
+    <a href="#produtos" class="header-btn">VER COLEÇÃO</a>
+
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<main>
+
+<section class="hero" id="inicio">
+    <div>
+        <div class="tag">MAIS QUE UM BARALHO. UMA EXPERIÊNCIA.</div>
+
+        <h1>O jogo começa com uma escolha.</h1>
+
+        <p>
+            Descubra baralhos selecionados para quem valoriza
+            design, qualidade e personalidade.
+            Eleve cada partida a um novo nível.
+        </p>
+
+        <a href="#produtos" class="btn">EXPLORAR BARALHOS →</a>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=1000"
+        alt="Cartas de baralho">
+    </div>
+</section>
+
+<section class="products" id="produtos">
+
+    <div class="heading">
+        <div class="tag">NOSSA COLEÇÃO</div>
+        <h2>Escolha seu próximo jogo.</h2>
+        <p>Design, personalidade e qualidade em cada carta.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=700"
+                alt="Baralho clássico">
+            </div>
+
+            <div class="product-info">
+                <h3>Classic Deck</h3>
+                <p>O clássico que nunca sai de moda.</p>
+                <p class="price">R$ 29,90</p>
+                <a class="buy-btn" href="https://wa.me/5511999999999?text=Olá! Quero comprar o Classic Deck.">COMPRAR AGORA →</a>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?w=700"
+                alt="Baralho premium">
+            </div>
+
+            <div class="product-info">
+                <h3>Premium Edition</h3>
+                <p>Um toque de exclusividade em suas partidas.</p>
+                <p class="price">R$ 49,90</p>
+                <a class="buy-btn" href="https://wa.me/5511999999999?text=Olá! Quero comprar o Premium Edition.">COMPRAR AGORA →</a>
+            </div>
+        </article>
+
+        <article class="product">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1529480780361-c8cb81eb5735?w=700"
+                alt="Baralho especial">
+            </div>
+
+            <div class="product-info">
+                <h3>Special Collection</h3>
+                <p>Para quem gosta de fazer diferente.</p>
+                <p class="price">R$ 69,90</p>
+                <a class="buy-btn" href="https://wa.me/5511999999999?text=Olá! Quero comprar o Special Collection.">COMPRAR AGORA →</a>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<section class="about" id="sobre">
+
+    <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?w=900"
+        alt="Detalhes de cartas">
+    </div>
+
+    <div>
+        <div class="tag">SOBRE A NAIPE</div>
+
+        <h2>Não é apenas sobre jogar.</h2>
+
+        <p>
+            Acreditamos que os melhores momentos começam
+            com pequenos detalhes. Por isso, buscamos oferecer
+            baralhos que unem estilo, qualidade e personalidade.
+        </p>
+
+        <p>
+            Seja para colecionar, presentear ou jogar,
+            temos uma opção para cada momento.
+        </p>
+
+        <a href="#produtos" class="btn">CONHEÇA A COLEÇÃO</a>
+    </div>
+
+</section>
+
+<section class="benefits">
+
+    <div class="benefit">
+        <span>✧</span>
+        <h3>Qualidade</h3>
+        <p>Baralhos selecionados para proporcionar uma ótima experiência.</p>
+    </div>
+
+    <div class="benefit">
+        <span>◇</span>
+        <h3>Design</h3>
+        <p>Estética diferenciada para quem valoriza cada detalhe.</p>
+    </div>
+
+    <div class="benefit">
+        <span>♡</span>
+        <h3>Experiência</h3>
+        <p>Mais personalidade para seus jogos e coleções.</p>
+    </div>
+
+</section>
+
+<section class="promo">
+
+    <div class="tag">SUA PRÓXIMA PARTIDA COMEÇA AQUI</div>
+
+    <h2>Escolha seu baralho.</h2>
+
+    <p>
+        Encontre o modelo que combina com você.<br>
+        Seu próximo jogo merece algo especial.
+    </p>
+
+    <a href="#produtos" class="btn">COMPRAR AGORA →</a>
+
+</section>
+
+<section class="testimonials">
+
+    <div class="tag">EXPERIÊNCIA NAIPE</div>
+
+    <blockquote>
+        "Cada detalhe faz a diferença.
+        Um baralho especial transforma qualquer partida
+        em um momento memorável."
+    </blockquote>
+
+    <p>NAIPE — NOSSA ESSÊNCIA</p>
+
+</section>
+
+</main>
+
+<footer id="contato">
+
+    <div class="footer-content">
+
+        <div>
+            <div class="logo">NAIPE<span>.</span></div>
+            <p>O jogo começa com uma escolha.</p>
+        </div>
+
+        <div>
+            <h4>EXPLORE</h4>
+            <p><a href="#inicio">Início</a></p>
+            <p><a href="#produtos">Baralhos</a></p>
+            <p><a href="#sobre">Nossa marca</a></p>
+        </div>
+
+        <div>
+            <h4>ATENDIMENTO</h4>
+            <p><a href="mailto:contato@naipe.com.br">E-mail</a></p>
+            <p><a href="https://wa.me/5511999999999">WhatsApp</a></p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 NAIPE. Todos os direitos reservados.
+    </div>
+
+</footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById('nav').classList.toggle('active');
+}
+
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('nav').classList.remove('active');
+    });
+});
+</script>
+
 </body>
 </html>
